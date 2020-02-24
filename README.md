@@ -1,4 +1,5 @@
 The Basic Tipping Problem
+
 This example creates a Mamdani fuzzy inference system using on a two-input, one-output tipping problem based on tipping practices. 
 Given a number between 0 and 10 that represents the quality of service at a restaurant (where 10 is excellent), and another number between 0 and 10 that represents the quality of the food at that restaurant (again, 10 is excellent), what should the tip be?
 The starting point is to write down the three golden rules of tipping:
