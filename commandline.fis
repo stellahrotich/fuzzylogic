@@ -1,0 +1,11 @@
+fis = readfis('tipper_demo.fis');
+fis.Inputs
+fis.Name = "gratuity";
+fis
+fis.Inputs(1)
+fis.Inputs(1).MembershipFunctions
+plotfis(fis)
+plotmf(fis,'input',1)
+plotmf(fis,'output',1)
+fis.Rules
+gensurf(fis)
