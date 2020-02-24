@@ -1,0 +1,91 @@
+>> fis = readfis('tipper_demo.fis');
+>> fis.Inputs
+
+ans = 
+
+  1×2 fisvar array with properties:
+
+    Name
+    Range
+    MembershipFunctions
+
+  Details:
+           Name        Range     MembershipFunctions
+         _________    _______    ___________________
+
+    1    "service"    0    10        {1×3 fismf}    
+    2    "food"       0    10        {1×2 fismf}    
+
+>> fis.Name = "gratuity";
+>> fis
+
+fis = 
+
+  mamfis with properties:
+
+                       Name: "gratuity"
+                  AndMethod: "min"
+                   OrMethod: "max"
+          ImplicationMethod: "min"
+          AggregationMethod: "max"
+      DefuzzificationMethod: "centroid"
+                     Inputs: [1×2 fisvar]
+                    Outputs: [1×1 fisvar]
+                      Rules: [1×3 fisrule]
+    DisableStructuralChecks: 0
+
+	See 'getTunableSettings' method for parameter optimization.
+
+>> fis.Inputs(1)
+
+ans = 
+
+  fisvar with properties:
+
+                   Name: "service"
+                  Range: [0 10]
+    MembershipFunctions: [1×3 fismf]
+
+>> fis.Inputs(1).MembershipFunctions
+
+ans = 
+
+  1×3 fismf array with properties:
+
+    Type
+    Parameters
+    Name
+
+  Details:
+            Name          Type       Parameters
+         ___________    _________    __________
+
+    1    "poor"         "gaussmf"    1.5      0
+    2    "good"         "gaussmf"    1.5      5
+    3    "excellent"    "gaussmf"    1.5     10
+
+>> plotfis(fis)
+>> plotmf(fis,'input',1)
+>> plotmf(fis,'output',1)
+>> fis.Rules
+
+ans = 
+
+  1×3 fisrule array with properties:
+
+    Description
+    Antecedent
+    Consequent
+    Weight
+    Connection
+
+  Details:
+                                Description                        
+         __________________________________________________________
+
+    1    "service==poor | food==rancid => tip=cheap (1)"           
+    2    "service==good => tip=average (1)"                        
+    3    "service==excellent | food==delicious => tip=generous (1)"
+
+>> gensurf(fis)
+>> plotmf(fis,'input',1)
